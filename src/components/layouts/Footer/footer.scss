@@ -1,0 +1,36 @@
+.footer--container {}
+
+.menu--item {
+    color: #c3cc26;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 300;
+    transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    text-decoration: none;
+
+
+}
+
+.footer--menu a:first-child .menu--item{
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 300;
+    color: white;
+    position: relative;
+
+    &::after{
+        content: "";
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 37px;
+    height: 3px;
+    background: #c3cc26;
+    }
+}
