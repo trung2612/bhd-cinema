@@ -1,0 +1,43 @@
+.promotion--title {
+    .MuiTab-root {
+        font-size: 20px;
+        line-height: 40px;
+        font-weight: bold;
+        color: #7dab4f;
+        font-size: 28px;
+        line-height: 40px;
+        font-weight: bold;
+    }
+
+    .MuiTab-root.Mui-selected {
+        color: #7dab4f;
+    }
+
+    .MuiTabs-indicator {
+        background-color: #7dab4f;
+    }
+}
+
+.promotion--divider {
+    margin: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    border-width: 0;
+    border-style: solid;
+    border-color: #bcdc95;
+    border-bottom-width: 0;
+    margin-top: 16px;
+    height: auto;
+    border-right-width: thin;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+
+}
+
+.promotion--tabs {
+    .MuiTabs-flexContainer {
+        justify-content: center;
+    }
+}

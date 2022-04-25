@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { ProductViewContext } from "feature/HomeScreen/HomeScreen";
 
 import logo from "../../../assets/images/logo.png";
 import FbIcon from "../../../assets/images/icon_fb.png";
@@ -14,6 +15,7 @@ import "./NavBar.scss";
 
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const productViewRef = useContext(ProductViewContext);
   const open = anchorEl;
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,9 +23,17 @@ const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleScrollToElement = () => {
+    window.scrollTo({
+      top: productViewRef.current.offsetTop + 20,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <header>
-      <nav className="main_header flex relative">
+      <nav className="main_header flex relative z-20">
         <div className="menu flex self-center px-3.5 bg-[#272727]">
           <Button
             id="basic-button	"
@@ -33,10 +43,15 @@ const NavBar = () => {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
           >
-            <div className="pb-1 w-9"><img src={bgBtnMenu} alt="btn bg"/></div>
-            <div className="pb-1 w-9"><img src={bgBtnMenu} alt="btn bg"/></div>
-            <div className="pb-1 w-9"><img src={bgBtnMenu} alt="btn bg"/></div>
-            
+            <div className="pb-1 w-9">
+              <img src={bgBtnMenu} alt="btn bg" />
+            </div>
+            <div className="pb-1 w-9">
+              <img src={bgBtnMenu} alt="btn bg" />
+            </div>
+            <div className="pb-1 w-9">
+              <img src={bgBtnMenu} alt="btn bg" />
+            </div>
             MENU
           </Button>
           <Menu
@@ -58,7 +73,11 @@ const NavBar = () => {
         </div>
 
         <div className="btn--buy-ticket self-center pl-4">
-          <Button className="bg-lime-600  font-bold" variant="contained">
+          <Button
+            className="bg-lime-600  font-bold"
+            variant="contained"
+            onClick={handleScrollToElement}
+          >
             MUA VÉ
           </Button>
         </div>
@@ -71,16 +90,40 @@ const NavBar = () => {
           <div className="social self-center pr-4">
             <ul className="flex">
               <li className="pr-4">
-                <img className="w-11" src={IgIcon} alt="social-icon" />
+                <a
+                  href="https://google.com.vn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="w-11" src={IgIcon} alt="social-icon" />
+                </a>
               </li>
               <li className="pr-4">
-                <img className="w-11" src={TTIcon} alt="social-icon" />
+                <a
+                  href="https://google.com.vn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="w-11" src={TTIcon} alt="social-icon" />
+                </a>
               </li>
               <li className="pr-4">
-                <img className="w-11" src={YtIcon} alt="social-icon" />
+                <a
+                  href="https://google.com.vn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="w-11" src={YtIcon} alt="social-icon" />
+                </a>
               </li>
               <li className="pr-4">
-                <img className="w-11" src={FbIcon} alt="social-icon" />
+                <a
+                  href="https://google.com.vn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img className="w-11" src={FbIcon} alt="social-icon" />
+                </a>
               </li>
             </ul>
           </div>
@@ -92,7 +135,7 @@ const NavBar = () => {
         </div>
       </nav>
       <div className="flex justify-center">
-        <img src={lineHeader} alt="line header" />
+        <img className=" z-10" src={lineHeader} alt="line header" />
       </div>
     </header>
   );

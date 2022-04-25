@@ -1,0 +1,36 @@
+.banner {
+    margin-top: -35px;
+
+    .react-multi-carousel-item {
+        padding: 0 !important;
+    }
+
+    .react-multi-carousel-dot-list {
+        z-index: 10;
+    }
+
+    .carousel--wrapper {
+        .react-multi-carousel-dot button {
+            background-color: #7b7b7b;
+        }
+
+        .react-multi-carousel-dot--active button {
+            background-color: #45ab3d;
+        }
+
+        .react-multi-carousel-track {
+            height: 900px;
+        }
+    }
+
+    .btn-scroll-to-product-view {
+        position: absolute;
+        top: 92%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        z-index: 10;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+}

@@ -15,8 +15,8 @@ const Footer = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6} lg={4}>
             <ul className="footer--menu footer--menu-left text-white">
-              {menuLeftItem.map((item) => (
-                <Link className="no-underline	" href={item.href}>
+              {menuLeftItem.map((item, key) => (
+                <Link key={key} className="no-underline	" href={item.href}>
                   <li className="menu--item menu-left--item mb-3">{item.name}</li>
                 </Link>
               ))}
@@ -25,8 +25,8 @@ const Footer = () => {
 
           <Grid item xs={12} md={6} lg={4}>
             <ul className="footer--menu footer--menu-right">
-              {menuRightItem.map((item) => (
-                <Link href={item.href}>
+              {menuRightItem.map((item, key) => (
+                <Link key={key} href={item.href}>
                   <li className="menu--item menu-right--item mb-3">{item.name}</li>
                 </Link>
               ))}
