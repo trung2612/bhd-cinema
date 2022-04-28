@@ -1,22 +1,34 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useSelector, useDispatch } from "react-redux";
 import { ProductViewContext } from "feature/HomeScreen/HomeScreen";
-
-import logo from "../../../assets/images/logo.png";
-import FbIcon from "../../../assets/images/icon_fb.png";
-import YtIcon from "../../../assets/images/icon_YT.png";
-import IgIcon from "../../../assets/images/icon-ig.png";
-import TTIcon from "../../../assets/images/icon_tiktok.png";
 import bgBtnMenu from "../../../assets/images/bg-button-menu.jpeg";
-import lineHeader from "../../../assets/images/line-header1.png";
+import { getSocials, getLogo,getHelpers } from "app/api";
 import "./NavBar.scss";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const productViewRef = useContext(ProductViewContext);
   const open = anchorEl;
+  const [socials, socialsStatus, logo, statusLogo, helpers] = useSelector((state) => [
+    state.globalState.socials,
+    state.globalState.statusSocials,
+    state.globalState.logo,
+    state.globalState.statusLogo,
+    state.globalState.helpers,
+  ]);
+
+  useEffect(() => {
+    if (statusLogo === "idle" && socialsStatus === "idle") {
+      dispatch(getSocials());
+      dispatch(getLogo());
+      dispatch(getHelpers());
+    }
+  }, [statusLogo, socialsStatus, dispatch]);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -83,7 +95,7 @@ const NavBar = () => {
         </div>
 
         <div className="logo mx-auto self-center absolute top-2/3 left-1/2">
-          <img className="w-20" src={logo} alt="lli" />
+          <img className="w-20" src={logo[0]?.image} alt={logo[0]?.alt} />
         </div>
 
         <div className="header-right flex ml-auto pr-9">
@@ -95,7 +107,11 @@ const NavBar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img className="w-11" src={IgIcon} alt="social-icon" />
+                  <img
+                    className="w-11"
+                    src={socials[0]?.image}
+                    alt={socials[0]?.alt}
+                  />
                 </a>
               </li>
               <li className="pr-4">
@@ -104,7 +120,11 @@ const NavBar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img className="w-11" src={TTIcon} alt="social-icon" />
+                  <img
+                    className="w-11"
+                    src={socials[1]?.image}
+                    alt={socials[1]?.alt}
+                  />
                 </a>
               </li>
               <li className="pr-4">
@@ -113,7 +133,11 @@ const NavBar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img className="w-11" src={YtIcon} alt="social-icon" />
+                  <img
+                    className="w-11"
+                    src={socials[2]?.image}
+                    alt={socials[2]?.alt}
+                  />
                 </a>
               </li>
               <li className="pr-4">
@@ -122,7 +146,11 @@ const NavBar = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img className="w-11" src={FbIcon} alt="social-icon" />
+                  <img
+                    className="w-11"
+                    src={socials[3]?.image}
+                    alt={socials[3]?.alt}
+                  />
                 </a>
               </li>
             </ul>
@@ -135,7 +163,7 @@ const NavBar = () => {
         </div>
       </nav>
       <div className="flex justify-center">
-        <img className=" z-10" src={lineHeader} alt="line header" />
+        <img className=" z-10" src={helpers[0]?.href} alt={helpers[0]?.alt} />
       </div>
     </header>
   );

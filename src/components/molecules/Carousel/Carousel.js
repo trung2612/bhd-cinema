@@ -54,7 +54,7 @@ const CarouselFn = ({
           <div key={index} className="carousel--card">
             <Link href={item.href}>
               <img className="carousel--img" src={item.image} alt={item.alt} />
-              <p className="carousel--content text-center py-6">{item.content}</p>
+              <p className="carousel--content text-center py-6">{item?.content}</p>
               <div className="btn--login self-center text-center">
             <Button className="bg-lime-600 font-bold" variant="contained">
               MUA VÉ

@@ -3,44 +3,12 @@ import { ProductViewContext } from "feature/HomeScreen/HomeScreen";
 import CarouselFn from "../Carousel/Carousel";
 import "./Banner.scss";
 
-const Banner = () => {
-  const bannerItems = [
-    {
-      image:
-        "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920x1080NSD-1.jpg",
-      alt: "a",
-      href: "",
-    },
-    {
-      image:
-        "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920x1080-Seventeen-Combo-1.jpg",
-      alt: "a",
-      href: "",
-    },
-    {
-      image:
-        "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920x1080-JJK-combo-1.jpeg",
-      alt: "a",
-      href: "",
-    },
-    {
-      image:
-        "https://www.bhdstar.vn/wp-content/uploads/2018/03/Package-U22.png",
-      alt: "a",
-      href: "",
-    },
-    {
-      image: "https://www.bhdstar.vn/wp-content/uploads/2018/03/App.jpg",
-      alt: "a",
-      href: "",
-    },
-    {
-      image:
-        "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920-x-1080-1-1.jpg",
-      alt: "a",
-      href: "",
-    },
-  ];
+const Banner = ({ banners }) => {
+  const bannerItems = banners.map((item) => ({
+    id: item.id,
+    image: item.href,
+    alt: item.alt,
+  }));
 
   const responsive = {
     all: {
