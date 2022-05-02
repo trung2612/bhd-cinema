@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -52,7 +52,7 @@ const CarouselFn = ({
       >
         {items.map((item, index) => (
           <div key={index} className="carousel--card">
-            <Link href={item.href}>
+            <Link to={item.href|| "/"}>
               <img className="carousel--img" src={item.image} alt={item.alt} />
               <p className="carousel--content text-center py-6">{item?.content}</p>
               <div className="btn--login self-center text-center">

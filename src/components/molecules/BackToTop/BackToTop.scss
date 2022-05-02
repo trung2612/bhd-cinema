@@ -1,0 +1,12 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 100px;
+    animation: fadeIn 700ms ease-in-out 1s both;
+    cursor: pointer;
+
+    svg {
+        font-size: 50px;
+        color: #d4dd29;
+    }
+}

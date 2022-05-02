@@ -17,7 +17,6 @@ export const bookingScreenSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getSeats.fulfilled, (state, action) => {
-        console.log(action);
         state.status = "succeeded";
         state.seats = state.seats.concat(action.payload.data) ;
       })

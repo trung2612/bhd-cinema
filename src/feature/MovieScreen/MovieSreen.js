@@ -1,32 +1,27 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import ContentLayout from "components/layouts/ContentLayout/ContentLayout";
 import {
-  Tabs,
-  Tab,
   Container,
   Breadcrumbs,
-  Link,
   Typography,
   Grid,
   Box,
   Button,
 } from "@mui/material";
-// import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import { getMovies } from "./api";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./MovieScreen.scss";
 
 const MovieScreen = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const params = useParams();
   const [movie, status] = useSelector((state) => [
     state.movieScreen.movies.filter((item) => item.data.id === params.id)[0]
       ?.data,
     state.movieScreen.status,
   ]);
-  console.log(movie);
 
   useEffect(() => {
     if (status === "idle") dispatch(getMovies());
@@ -43,7 +38,7 @@ const MovieScreen = () => {
           <div className="film--detail-title py-6">
             <div className="py-6" role="presentation" onClick={handleClick}>
               <Breadcrumbs separator="|" aria-label="breadcrumb">
-                <Link underline="hover" href="/">
+                <Link underline="hover" to="/">
                   Trang chủ
                 </Link>
                 <Typography className="font-bold" color="text.primary">
@@ -113,21 +108,23 @@ const MovieScreen = () => {
                       </ol>
 
                       <div className="btn--green">
-                          <Link href="/"> <Button
-                          className="bg-lime-600  font-bold"
-                          variant="contained"
-                        >
-                          XEM TRAILER
-                        </Button>
-                          </Link>
-                       <Link href="/"><Button
-                          className="bg-lime-600  font-bold"
-                          variant="contained"
-                        >
-                          MUA VÉ NGAY
-                        </Button>
-                       </Link>
-                        
+                        <Link to="/">
+                          {" "}
+                          <Button
+                            className="bg-lime-600  font-bold"
+                            variant="contained"
+                          >
+                            XEM TRAILER
+                          </Button>
+                        </Link>
+                        <Link to="/">
+                          <Button
+                            className="bg-lime-600  font-bold"
+                            variant="contained"
+                          >
+                            MUA VÉ NGAY
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>

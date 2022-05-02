@@ -1,5 +1,6 @@
 import { Grid,Container } from "@mui/material";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
+
 
 import {menuLeftItem, menuRightItem} from './constant';
 import logo from "../../../assets/images/logo.png";
@@ -16,7 +17,7 @@ const Footer = () => {
           <Grid item xs={12} md={6} lg={4}>
             <ul className="footer--menu footer--menu-left text-white">
               {menuLeftItem.map((item, key) => (
-                <Link key={key} className="no-underline	" href={item.href}>
+                <Link key={key} className="no-underline	" to={item.href}>
                   <li className="menu--item menu-left--item mb-3">{item.name}</li>
                 </Link>
               ))}
@@ -26,7 +27,7 @@ const Footer = () => {
           <Grid item xs={12} md={6} lg={4}>
             <ul className="footer--menu footer--menu-right">
               {menuRightItem.map((item, key) => (
-                <Link key={key} href={item.href}>
+                <Link key={key} to={item.href}>
                   <li className="menu--item menu-right--item mb-3">{item.name}</li>
                 </Link>
               ))}

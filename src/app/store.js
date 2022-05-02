@@ -3,12 +3,14 @@ import homeScreenReducer from "feature/HomeScreen/slice";
 import movieScreenReducer from "feature/MovieScreen/slice";
 import bookingScreenReducer from "feature/BookingScreen/slice"
 import globalStateReducer from "app/slice";
+import loginScreenReducer from "feature/LoginScreen/slice"
 
 export default configureStore({
     reducer:{
         homeScreen: homeScreenReducer,
         globalState:globalStateReducer,
         movieScreen: movieScreenReducer,
-        bookingScreen:bookingScreenReducer
+        bookingScreen:bookingScreenReducer,
+        loginScreen:loginScreenReducer
     }
 })
