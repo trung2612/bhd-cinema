@@ -1,0 +1,1 @@
+export const MOVIE_SCREEN_GET_MOVIES = 'movieScreen/getMovies';

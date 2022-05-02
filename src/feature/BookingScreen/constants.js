@@ -1,0 +1,1 @@
+export const BOOKING_SCREEN_GET_SEAT = 'bookingScreen/getSeats';

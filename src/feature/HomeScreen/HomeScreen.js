@@ -46,30 +46,130 @@ const HomeScreen = () => {
     if (postStatus === "idle") dispatch(getBanners());
   }, [postStatus, dispatch]);
 
-  // useEffect(()=>{
-  //   addData("events",[
-  //     {
-  //       "alt": "oled",
-  //       "image": "https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/event%2FOLED.jpg?alt=media&token=6c60a874-e6f2-4bfe-839e-e395129e8216",
-  //       "id": "1"
-  //     },
-  //     {
-  //       "alt": "qrcode",
-  //       "image": "https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/event%2FQRCode.jpg?alt=media&token=71b51094-b344-4cb1-94ed-7b86a9d7275b",
-  //       "id": "2"
-  //     },
-  //     {
-  //       "alt": "app",
-  //       "image": "https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/event%2Fapp.jpg?alt=media&token=58106d0a-2ceb-4eae-9c37-7bb651d97dcf",
-  //       "id": "3"
-  //     },
-  //     {
-  //       "alt": "hot line",
-  //       "image": "https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/event%2Fhotline.jpg?alt=media&token=ae900b0d-2fee-46fb-8f9c-787321de38f6",
-  //       "id": "4"
-  //     }
-  //   ])
-  // },[])
+  // useEffect(() => {
+  //   addData("movies", {
+  //     id: "mv03",
+  //     name: "NGHỀ SIÊU DỄ",
+  //     description:
+  //       "Phim kể về một cảnh sát đã nghỉ hưu cùng các thanh niên bất hảo mua lại 1 quán ăn để làm nơi theo dõi tên trùm tội phạm. Tuy nhiên, quán bất ngờ nổi tiếng khiên cho phi vụ có nguy cơ đổ bể.",
+  //     classify: "C16 - PHIM DÀNH CHO KHÁN GIẢ TỪ 16 TUỔI TRỞ LÊN",
+  //     director: "VO THANH HOA",
+  //     actor: "THU TRANG, KIEU MINH TUAN, HUỲNH PHƯƠNG",
+  //     category: "Action",
+  //     time_start: "2022-04-29",
+  //     time: "113",
+  //     national: "Phụ đề tiếng Việt",
+  //     image:
+  //       "https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/movies%2Fnghe-sieu-de.jpeg?alt=media&token=75507885-c4dc-4931-906d-830ad6f1f447",
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   addData("seats", {
+  //     id:"mv01",
+  //     data: [
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       },
+  //       {
+  //         1: false,
+  //         2: false,
+  //         3: false,
+  //         4: false,
+  //         5: false,
+  //         6: false,
+  //         7: false,
+  //         8: false,
+  //         9: false,
+  //       }
+  //     ],
+  //   });
+  // }, []);
 
   const kmItems = [
     {

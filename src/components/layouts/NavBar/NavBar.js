@@ -5,7 +5,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductViewContext } from "feature/HomeScreen/HomeScreen";
 import bgBtnMenu from "../../../assets/images/bg-button-menu.jpeg";
-import { getSocials, getLogo,getHelpers } from "app/api";
+import { getSocials, getLogo, getHelpers } from "app/api";
+import Link from "@mui/material/Link";
+
 import "./NavBar.scss";
 
 const NavBar = () => {
@@ -13,13 +15,15 @@ const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const productViewRef = useContext(ProductViewContext);
   const open = anchorEl;
-  const [socials, socialsStatus, logo, statusLogo, helpers] = useSelector((state) => [
-    state.globalState.socials,
-    state.globalState.statusSocials,
-    state.globalState.logo,
-    state.globalState.statusLogo,
-    state.globalState.helpers,
-  ]);
+  const [socials, socialsStatus, logo, statusLogo, helpers] = useSelector(
+    (state) => [
+      state.globalState.socials,
+      state.globalState.statusSocials,
+      state.globalState.logo,
+      state.globalState.statusLogo,
+      state.globalState.helpers,
+    ]
+  );
 
   useEffect(() => {
     if (statusLogo === "idle" && socialsStatus === "idle") {
@@ -95,7 +99,9 @@ const NavBar = () => {
         </div>
 
         <div className="logo mx-auto self-center absolute top-2/3 left-1/2">
-          <img className="w-20" src={logo[0]?.image} alt={logo[0]?.alt} />
+          <Link href="/">
+            <img className="w-20" src={logo[0]?.image} alt={logo[0]?.alt} />
+          </Link>
         </div>
 
         <div className="header-right flex ml-auto pr-9">
