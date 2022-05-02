@@ -5,21 +5,30 @@ import MenuItem from "@mui/material/MenuItem";
 import { useSelector, useDispatch } from "react-redux";
 import { ProductViewContext } from "feature/HomeScreen/HomeScreen";
 import bgBtnMenu from "../../../assets/images/bg-button-menu.jpeg";
-import { getSocials, getLogo,getHelpers } from "app/api";
+import { getSocials, getLogo, getHelpers } from "app/api";
+import { Link } from "react-router-dom";
+import { isLogin } from "helpers/helpers";
+import { useNavigate } from "react-router-dom";
+
+
 import "./NavBar.scss";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const productViewRef = useContext(ProductViewContext);
+  const [isAuthen, setIsAuthen] = useState(true);
   const open = anchorEl;
-  const [socials, socialsStatus, logo, statusLogo, helpers] = useSelector((state) => [
-    state.globalState.socials,
-    state.globalState.statusSocials,
-    state.globalState.logo,
-    state.globalState.statusLogo,
-    state.globalState.helpers,
-  ]);
+  const navigate = useNavigate();
+  const [socials, socialsStatus, logo, statusLogo, helpers] = useSelector(
+    (state) => [
+      state.globalState.socials,
+      state.globalState.statusSocials,
+      state.globalState.logo,
+      state.globalState.statusLogo,
+      state.globalState.helpers,
+    ]
+  );
 
   useEffect(() => {
     if (statusLogo === "idle" && socialsStatus === "idle") {
@@ -28,6 +37,10 @@ const NavBar = () => {
       dispatch(getHelpers());
     }
   }, [statusLogo, socialsStatus, dispatch]);
+
+  useEffect(() => {
+    if (!isLogin()) setIsAuthen(false);
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -95,7 +108,9 @@ const NavBar = () => {
         </div>
 
         <div className="logo mx-auto self-center absolute top-2/3 left-1/2">
-          <img className="w-20" src={logo[0]?.image} alt={logo[0]?.alt} />
+          <Link to="/">
+            <img className="w-20" src={logo[0]?.image} alt={logo[0]?.alt} />
+          </Link>
         </div>
 
         <div className="header-right flex ml-auto pr-9">
@@ -156,9 +171,17 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="btn--login self-center">
-            <Button className="bg-lime-600 font-bold" variant="contained">
-              ĐĂNG NHẬP
-            </Button>
+            {!isAuthen ? (
+              <Link to="/login">
+                <Button className="bg-lime-600 font-bold" variant="contained">
+                  ĐĂNG NHẬP
+                </Button>
+              </Link>
+            ) : (
+              <Button className="bg-lime-600 font-bold" onClick={()=>{localStorage.removeItem('isLoggedIn');navigate("/login")}} variant="contained">
+                ĐĂNG XUẤT
+              </Button>
+            )}
           </div>
         </div>
       </nav>

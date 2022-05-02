@@ -1,0 +1,1 @@
+export const LOGIN_SCREEN_GET_ACCOUNTS = 'loginScreen/getAccounts';

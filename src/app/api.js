@@ -1,4 +1,4 @@
-import callApi from "helpers/call-api";
+import {callApi} from "helpers/call-api";
 import {
     GLOBAL_STATE_GET_SOCIALS,
     GLOBAL_STATE_GET_LOGO,GLOBAL_STATE_GET_HELPERS
