@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ContentLayout from "components/layouts/ContentLayout/ContentLayout";
 import {
   Container,
@@ -12,11 +12,13 @@ import { Link } from "react-router-dom";
 import { getMovies } from "./api";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import Trailer from "./components/Trailer";
 import "./MovieScreen.scss";
 
 const MovieScreen = () => {
   const dispatch = useDispatch();
   const params = useParams();
+  const [isShowTrailer, setIsShowTrailer] = useState(false);
   const [movie, status] = useSelector((state) => [
     state.movieScreen.movies.filter((item) => item.data.id === params.id)[0]
       ?.data,
@@ -31,6 +33,10 @@ const MovieScreen = () => {
     event.preventDefault();
     console.info("You clicked a breadcrumb.");
   };
+
+  const handleShowTrailer = () =>{
+    setIsShowTrailer(prev => !prev)
+  }
   return (
     <ContentLayout>
       <div className="film--wrapper">
@@ -108,16 +114,14 @@ const MovieScreen = () => {
                       </ol>
 
                       <div className="btn--green">
-                        <Link to="/">
-                          {" "}
                           <Button
                             className="bg-lime-600  font-bold"
                             variant="contained"
+                            onClick={() => {handleShowTrailer()}}
                           >
                             XEM TRAILER
                           </Button>
-                        </Link>
-                        <Link to="/">
+                        <Link to="booking">
                           <Button
                             className="bg-lime-600  font-bold"
                             variant="contained"
@@ -134,7 +138,7 @@ const MovieScreen = () => {
           </div>
           <div className="film--detail-showtimes"></div>
         </Container>
-        <div className="trailer--wrapper"></div>
+        {isShowTrailer && <Trailer urlTrailer={movie?.url_trailer}/>}
       </div>
     </ContentLayout>
   );

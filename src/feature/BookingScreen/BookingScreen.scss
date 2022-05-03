@@ -1,26 +1,97 @@
-.booking--wrapper{
-    .booking--seat{
-        td{
-            width: 30px;
-            height: 30px;
-            border: 5px solid white;
-            background-color: #bdc2c7;
-        }
+.booking--wrapper {
+  background: url(https://www.bhdstar.vn/wp-content/themes/bhd/assets/images/movie-details-bg.jpg);
+  color: #fff;
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  margin-top: -31px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  .booking--seat {
+    td {
+      width: 30px;
+      height: 30px;
+      border: 5px solid white;
+      background-color: #bdc2c7;
     }
+  }
 }
+
 .seat-picker {
-    margin: 0 auto;
+  margin: 0 auto;
+}
+
+.seat {
+  width: 60px;
+  height: 60px;
+}
+
+.seat {
+  border-radius: 0;
+}
+
+.seat__number {
+  font-size: 20px;
+}
+
+.booking {
+  position: relative;
+
+  .movie-img img {
+    max-width: 200px;
   }
-  .seat {
-    width: 60px;
-    height: 60px;
+
+  .movie--content {
+    max-width: 500px;
   }
-  
-  .seat {
-    border-radius: 0;
-  }
-  
-  .seat__number {
+
+  .movie-name {
     font-size: 20px;
+    line-height: 20px;
+    color: #89c441;
+    font-weight: bold;
   }
-  
+
+  .movie-time {
+    font-size: 16px;
+    color: white;
+  }
+
+  .gio--hang {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #333;
+
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 50%;
+      color: #89c441;
+      font-weight: bold;
+    }
+
+    .total--price {
+      border-top: 2px solid rgba(221, 221, 221, 0.12);
+      ;
+    }
+  }
+
+  .confirm {
+    border-top: 1px solid #fff;
+    padding: 10px;
+  }
+
+  .card--title {
+    font-size: 22px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+    font-weight: bold;
+  }
+
+
+}
