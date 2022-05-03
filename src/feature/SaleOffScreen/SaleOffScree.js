@@ -1,53 +1,105 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useEffect } from "react";
-import { addData } from "helpers/call-api";
+import { useState, useEffect } from "react";
+import ContentLayout from "components/layouts/ContentLayout/ContentLayout";
+import { Container, Tabs, Tab, Grid } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { getSaleoff, getEvents } from "./api";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAJJciJRtqXMZ7kZelF6itCrM0DyNlA39o",
-  authDomain: "bhd-star.firebaseapp.com",
-  databaseURL: "https://bhd-star-default-rtdb.firebaseio.com",
-  projectId: "bhd-star",
-  storageBucket: "bhd-star.appspot.com",
-  messagingSenderId: "387128925493",
-  appId: "1:387128925493:web:70e4580ddd21878f27807c",
-  measurementId: "G-18WD3320QG",
+import { Link } from "react-router-dom";
+import "./SaleOffScreen.scss";
+
+const TabPanel = (props) => {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      className="py-6"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && <>{children}</>}
+    </div>
+  );
 };
-export const callApi = (constant, databaseName) => {
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  return createAsyncThunk(constant, async () => {
-    const querySnapshot = await getDocs(collection(db, databaseName));
-    let data = {};
-    querySnapshot.forEach((doc) => {
-      data = doc.data();
-    });
-    return data;
-  });
+const a11yProps = (index) => {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
 };
 
 const SaleOffScreen = () => {
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const [value, setValue] = useState(0);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   addData("movies", {
-  //     id: "mv10",
-  //     name: "RUN HIDE FIGHT",
-  //     description:"Cô gái 17 tuổi Zoe Hull sử dụng trí thông minh, kỹ năng sinh tồn và lòng trắc ẩn của mình để chiến đấu vì mạng sống của mình và của những người bạn cùng lớp, chống chọi trực tiếp lại một nhóm bắn súng tại trường.",
-  //     classify: "C18 - PHIM DÀNH CHO KHÁN GIẢ TỪ 18 TUỔI TRỞ LÊN",
-  //     director: "Kyle Rankin",
-  //     actor: "Isabel May, Thomas Jane, Olly Sholotan",
-  //     category: "Action",
-  //     time_start: "2022-04-22",
-  //     time: "110",
-  //     national: "Phụ đề tiếng Việt",
-  //     image:"https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/movies%2Frun-hide-fight.jpeg?alt=media&token=ad982acd-6048-4278-ae34-fac924d3b579",
-  //   });
-  // }, []);
+  const [saleoff, saleoffStatus, events, eventStatus] = useSelector((state) => [
+    state?.saleoffScreen?.saleoff,
+    state?.saleoffScreen?.statusSaleofff,
+    state?.saleoffScreen?.events,
+    state?.saleoffScreen?.statusEvents,
+  ]);
 
-  return <>haha</>;
+  useEffect(() => {
+    if (saleoffStatus === "idle") dispatch(getSaleoff());
+    if (eventStatus === "idle") dispatch(getEvents());
+  }, [saleoffStatus, eventStatus, dispatch]);
+
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <ContentLayout>
+      <div className="sale-off--wrapper">
+        <Container>
+          <div className="sale-of--title">
+            <Tabs
+              className="sale-of--tabs pb-4 justi"
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              <Tab label="khuyến mãi" {...a11yProps(0)} />
+
+              <Tab label="sự kiện" {...a11yProps(1)} />
+            </Tabs>
+
+            <TabPanel value={value} index={0}>
+              <Grid container spacing={2}>
+                {saleoff?.map((item, index) => (
+                  <Grid key={index} item md={3} className="pb-6 cursor-pointer">
+                    <Link to={"1"}>
+                      <div className="item--img">
+                        <img src={item?.href} alt={item?.alt} />
+                      </div>
+                      <p className="item--content">{item?.content}</p>
+                    </Link>
+                  </Grid>
+                ))}
+              </Grid>
+            </TabPanel>
+
+            <TabPanel value={value} index={1}>
+              <Grid container spacing={2}>
+                {events?.map((item, index) => (
+                  <Link key={index} to={"1"}>
+                    <Grid item md={4} className="pb-6 cursor-pointer">
+                      <div className="item--img">
+                        <img src={item?.image} alt={item?.alt} />
+                      </div>
+                      <p className="item--content">{item?.content}</p>
+                    </Grid>
+                  </Link>
+                ))}
+              </Grid>
+            </TabPanel>
+          </div>
+        </Container>
+      </div>
+    </ContentLayout>
+  );
 };
 
 export default SaleOffScreen;

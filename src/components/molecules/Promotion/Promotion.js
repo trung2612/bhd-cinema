@@ -112,11 +112,11 @@ const Promotion = (props) => {
         </Tabs>
 
         <TabPanel value={value} index={0}>
-          <CarouselFn moveTo="/saleoff" items={kmItems} />
+          <CarouselFn moveTo="/saleoff/2" items={kmItems} />
         </TabPanel>
 
         <TabPanel value={value} index={2}>
-          <CarouselFn moveTo="/saleoff" items={eventItems}/>
+          <CarouselFn moveTo="/saleoff/2" items={eventItems}/>
         </TabPanel>
       </div>
     </Container>

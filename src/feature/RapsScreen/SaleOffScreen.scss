@@ -1,0 +1,57 @@
+.sale-off--wrapper {
+    position: relative;
+    background: #132028 url(https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/helpers%2Fbg-cinema-10.png?alt=media&token=54320f68-5ff7-4b14-9bcd-a5d568ed76cd) center top repeat;
+    margin-top: 0;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    margin-top: -31px;
+
+    .item--content {
+        background: #172029;
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: bold;
+        transition: 0.4s ease all;
+        -moz-transition: 0.4s ease all;
+        -webkit-transition: 0.4s ease all;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .MuiTabs-flexContainer {
+        justify-content: center;
+    }
+
+    .MuiTab-root.Mui-selected {
+        color: #d4dd29;
+    }
+
+    .MuiTab-root {
+        color: white;
+        font-size: 32px;
+        font-weight: normal;
+    }
+
+    .MuiTabs-indicator {
+        background-color: #d4dd29;
+    }
+
+    .react-multi-carousel-track {
+        height: 380px;
+    }
+
+    .item--img {
+        height: 84%;
+        transition: transform 0.3s ease-in-out;
+
+        img {
+            margin: 0 auto;
+        }
+
+        &:hover {
+            transform: scale(1.1)
+        }
+    }
+}

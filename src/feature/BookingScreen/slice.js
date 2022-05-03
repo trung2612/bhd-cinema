@@ -29,6 +29,6 @@ export const bookingScreenSlice = createSlice({
   },
 });
 
-export const { } = bookingScreenSlice.actions;
+// export const { } = bookingScreenSlice.actions;
 
 export default bookingScreenSlice.reducer;

@@ -25,7 +25,6 @@ const BookingScreen = () => {
   // const location = useLocation();
   const navigate = useNavigate();
   const params = useParams();
-  console.log(params);
   const [selected, setSelected] = React.useState([]);
   const [seatsData, setSeatsData] = useState([]);
   const [updateSeatsData, setUpdateSeatData] = useState(seatsData);
@@ -40,7 +39,6 @@ const BookingScreen = () => {
       ?.data,
     state.movieScreen.status,
   ]);
-  console.log(movie);
   useEffect(() => {
     if (moviestatus === "idle") dispatch(getMovies());
   }, [moviestatus, dispatch]);
@@ -87,7 +85,6 @@ const BookingScreen = () => {
   useEffect(() => {
     if (seatsData && !!seatsData.length) {
       setUpdateSeatData(seatsData);
-      console.log(handleUpdateSeats());
     }
   }, [seatsData, handleUpdateSeats]);
 
@@ -118,7 +115,6 @@ const BookingScreen = () => {
             <div className="booking--seat">
               {/* <p>{console.log(selected)}</p> */}
               <SeatPicker setSelected={setSelected} row={seatsData} />
-              {console.log(seatsData)}
             </div>
 
             <div className="gio--hang">

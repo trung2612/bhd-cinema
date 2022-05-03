@@ -2,7 +2,6 @@ import ReactPlayer from "react-player";
 import "./Trailer.scss";
 
 const Trailer = ({urlTrailer}) => {
-  console.log(urlTrailer);
   return (
     <div className="movie--trailer">
       <ReactPlayer
