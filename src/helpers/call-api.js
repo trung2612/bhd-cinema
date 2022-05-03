@@ -43,11 +43,22 @@ export const callApis = (constant, databaseName) => {
   });
 };
 
-export const addData = async (dbName, email, password) => {
+export const addDataAccount = async (dbName, email, password) => {
   try {
     const docRef = await addDoc(collection(db, dbName), {
       email: email,
       password: password,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+
+export const addData = async (dbName, data) => {
+  try {
+    const docRef = await addDoc(collection(db, dbName), {
+      data,
     });
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {

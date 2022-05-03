@@ -26,8 +26,9 @@ const CarouselFn = ({
       items: 1,
     },
   },
-  isDots="true",
-  isArrow="false"
+  isDots = "true",
+  isArrow = "false",
+  moveTo,
 }) => {
   return (
     <div className="carousel--wrapper">
@@ -52,14 +53,16 @@ const CarouselFn = ({
       >
         {items.map((item, index) => (
           <div key={index} className="carousel--card">
-            <Link to={item.href|| "/"}>
+            <Link to={`${moveTo+'/'}${item.href}`}>
               <img className="carousel--img" src={item.image} alt={item.alt} />
-              <p className="carousel--content text-center py-6">{item?.content}</p>
+              <p className="carousel--content text-center py-6">
+                {item?.content}
+              </p>
               <div className="btn--login self-center text-center">
-            <Button className="bg-lime-600 font-bold" variant="contained">
-              MUA VÉ
-            </Button>
-          </div>
+                <Button className="bg-lime-600 font-bold" variant="contained">
+                  MUA VÉ
+                </Button>
+              </div>
             </Link>
           </div>
         ))}

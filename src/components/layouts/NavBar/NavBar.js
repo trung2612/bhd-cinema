@@ -88,12 +88,12 @@ const NavBar = () => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>LỊCH CHIẾU</MenuItem>
+            <Link to={"/movie"}><MenuItem onClick={handleClose}>LỊCH CHIẾU</MenuItem></Link>
             <MenuItem onClick={handleClose}>HỆ THỐNG RẠP</MenuItem>
             <MenuItem onClick={handleClose}>KHUYẾN MÃI | SỰ KIỆN</MenuItem>
             <MenuItem onClick={handleClose}>DỊCH VỤ QUẢNG CÁO</MenuItem>
             <MenuItem onClick={handleClose}>TUYỂN DỤNG</MenuItem>
-            <MenuItem onClick={handleClose}>VỀ CHÚNG TÔI</MenuItem>
+            <Link to={"/ve-chung-toi"}><MenuItem onClick={handleClose}>VỀ CHÚNG TÔI</MenuItem></Link>
           </Menu>
         </div>
 

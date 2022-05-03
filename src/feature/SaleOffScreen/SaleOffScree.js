@@ -1,13 +1,9 @@
 import { initializeApp } from "firebase/app";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
+import { addData } from "helpers/call-api";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAJJciJRtqXMZ7kZelF6itCrM0DyNlA39o",
   authDomain: "bhd-star.firebaseapp.com",
@@ -34,112 +30,23 @@ export const callApi = (constant, databaseName) => {
 const SaleOffScreen = () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  const handleAddData = useCallback(async () => {
-    await setDoc(doc(db, "cities", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA",
-    });
-  }, [db]);
 
-//   useEffect(() => {
-//     handleAddData();
-//   }, [handleAddData]);
+  // useEffect(() => {
+  //   addData("movies", {
+  //     id: "mv10",
+  //     name: "RUN HIDE FIGHT",
+  //     description:"Cô gái 17 tuổi Zoe Hull sử dụng trí thông minh, kỹ năng sinh tồn và lòng trắc ẩn của mình để chiến đấu vì mạng sống của mình và của những người bạn cùng lớp, chống chọi trực tiếp lại một nhóm bắn súng tại trường.",
+  //     classify: "C18 - PHIM DÀNH CHO KHÁN GIẢ TỪ 18 TUỔI TRỞ LÊN",
+  //     director: "Kyle Rankin",
+  //     actor: "Isabel May, Thomas Jane, Olly Sholotan",
+  //     category: "Action",
+  //     time_start: "2022-04-22",
+  //     time: "110",
+  //     national: "Phụ đề tiếng Việt",
+  //     image:"https://firebasestorage.googleapis.com/v0/b/bhd-star.appspot.com/o/movies%2Frun-hide-fight.jpeg?alt=media&token=ad982acd-6048-4278-ae34-fac924d3b579",
+  //   });
+  // }, []);
 
-  // useEffect(()=>{
-  //   setDoc(doc(db, 'seats', '1'), {
-  //       id: "mv01",
-  //       data: [
-  //         {
-  //           row: [
-  //             { id: 1, number: 1, isSelected: true },
-  //             { id: 2, number: 2 },
-  //             {
-  //               id: 3,
-  //               number: 3,
-  //               isReserved: true,
-  //               isSelected: true
-  //             },
-  //             { id: 4, number: 4 },
-  //             { id: 5, number: 5 },
-  //             { id: 6, number: 6 },
-  //             { id: 7, number: 7 },
-  //             { id: 8, number: 8 },
-  //             { id: 6, number: 9 },
-  //             { id: 10, number: 10 },
-  //           ],
-  //         },
-  //         {
-  //           row: [
-  //             {
-  //               id: 11,
-  //               number: 1,
-  //               isReserved: true,
-  //             },
-  //             { id: 12, number: 2, isReserved: true },
-  //             { id: 13, number: "3", isReserved: true },
-  //             { id: 14, number: 4 },
-  //             { id: 15, number: 5 },
-  //             { id: 16, number: 6 },
-  //             { id: 17, number: 7, isReserved: true },
-  //             { id: 18, number: "8", isReserved: true },
-  //             { id: 19, number: 9 },
-  //             { id: 20, number: 10 },
-  //           ],
-  //         },
-  //         {
-  //           row: [
-  //             { id: 21, number: 1 },
-  //             { id: 22, number: 2 },
-  //             { id: 23, number: 3, isReserved: true },
-  //             { id: 24, number: 4 },
-  //             { id: 25, number: 5 },
-  //             { id: 26, number: 6 },
-  //             { id: 27, number: 7 },
-  //             { id: 28, number: 8 },
-  //             { id: 29, number: 9 },
-  //             { id: 30, number: 10 },
-  //           ],
-  //         },
-  //         {
-  //           row: [
-  //             { id: 31, number: 1 },
-  //             { id: 32, number: 2 },
-  //             { id: 33, number: 3 },
-  //             { id: 34, number: 4 },
-  //             { id: 35, number: 5 },
-  //             { id: 36, number: 6 },
-  //             { id: 37, number: 7 },
-  //             { id: 38, number: 8 },
-  //             { id: 39, number: 9 },
-  //             { id: 40, number: 10 },
-  //           ],
-  //         },
-  //         {
-  //           row: [
-  //             { id: 41, number: 1, isReserved: true },
-  //             { id: 42, number: 2, orientation: "east" },
-  //             { id: 43, number: "3", isReserved: true },
-  //             { id: 44, number: 4 },
-  //             { id: 45, number: 5 },
-  //             { id: 46, number: 6, isReserved: true },
-  //             { id: 47, number: 7, isReserved: true },
-  //             { id: 48, number: 8, isReserved: true },
-  //             { id: 49, number: 9, isReserved: true },
-  //             { id: 50, number: 10, isReserved: true },
-  //           ],
-  //         },
-  //       ],
-  //     });
-
-  // },[db])
-  // useEffect(()=>{
-  //   setDoc(doc(db, 'account', '1'), {
-  //       email: "admin@gmail.com",
-  //       password: "12345678",
-  //     });
-
-  // },[db])
   return <>haha</>;
 };
 

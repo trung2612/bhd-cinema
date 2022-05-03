@@ -1,6 +1,7 @@
 .carousel--wrapper {
     .react-multi-carousel-track {
         height: 250px;
+        margin: 0 auto;
     }
 
     .carousel--card {
@@ -11,14 +12,15 @@
             height: 100%;
             object-fit: cover;
         }
-        .carousel--content{
+
+        .carousel--content {
             font-size: 18px;
             text-decoration: none;
             color: white;
             text-transform: uppercase;
             white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 

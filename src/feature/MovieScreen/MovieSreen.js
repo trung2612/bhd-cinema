@@ -134,6 +134,7 @@ const MovieScreen = () => {
           </div>
           <div className="film--detail-showtimes"></div>
         </Container>
+        <div className="trailer--wrapper"></div>
       </div>
     </ContentLayout>
   );

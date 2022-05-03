@@ -28,7 +28,7 @@ const Banner = ({ banners }) => {
 
   return (
     <div className="banner bg-black relative">
-      <CarouselFn items={bannerItems} responsive={responsive} />
+      <CarouselFn moveTo="saleoff" items={bannerItems} responsive={responsive} />
       <span
         className="btn-scroll-to-product-view"
         onClick={handleScrollToElement}

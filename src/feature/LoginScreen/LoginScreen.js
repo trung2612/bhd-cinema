@@ -6,7 +6,7 @@ import Promotion from "components/molecules/Promotion/Promotion";
 import { useNavigate } from "react-router-dom";
 import { getAccounts } from "./api";
 import { useSelector, useDispatch } from "react-redux";
-import {addData} from "helpers/call-api"
+import {addDataAccount} from "helpers/call-api"
 
 import "./LoginScreen.scss";
 
@@ -128,7 +128,7 @@ const LoginScreen = (props) => {
   };
 
   const onRegister = (email, password) => {
-    addData("account",email,password);
+    addDataAccount("account",email,password);
   };
 
   const submitRegisterHandler = (event) => {
